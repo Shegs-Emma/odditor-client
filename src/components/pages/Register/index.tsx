@@ -10,9 +10,19 @@ import { Eye, EyeOff } from "lucide-react";
 import Welcome from "@/components/reusables/welcome";
 import Oauth from "@/components/reusables/oauth";
 import { useRouter } from "next/navigation";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../../ui/dialog";
+import VerifyEmailPopup from "@/components/popups/verifyEmailPopup";
 
 const Register = () => {
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isPending, startTransition] = useTransition();
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const [pwd, setPwd] = useState("");
@@ -360,7 +370,10 @@ const Register = () => {
                   </div>
                 ) : (
                   <div
-                    onClick={() => handleSubmit()}
+                    // onClick={() => handleSubmit()}
+                    onClick={() => {
+                      setIsOpen(true);
+                    }}
                     className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
                   >
                     Sign up
@@ -383,6 +396,20 @@ const Register = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div>
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+          <DialogTrigger></DialogTrigger>
+          <DialogContent className="bg-[#ffffff]">
+            <DialogHeader>
+              <DialogTitle></DialogTitle>
+              <DialogDescription>
+                <VerifyEmailPopup setIsOpen={setIsOpen} />
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );

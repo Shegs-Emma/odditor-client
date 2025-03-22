@@ -1,34 +1,21 @@
 "use client";
 
 import React, { useState, useTransition } from "react";
-import Oauth from "@/components/reusables/oauth";
 import Welcome from "@/components/reusables/welcome";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { twMerge } from "tailwind-merge";
-import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-const Login = () => {
+const ForgotPassword = () => {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
-  const [pwd, setPwd] = useState("");
-  const [visibility, setVisibility] = useState(false);
   const [formValues, setFormValues] = useState({
     email: "",
-    password: "",
   });
   const [errorFields, setErrorFields] = useState({
     email: false,
-    password: false,
   });
-
-  const InputType = visibility ? "text" : "password";
-
-  const viewer = () => {
-    setVisibility(!visibility);
-  };
 
   // Handle change code ========================================================================================================================
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,12 +61,14 @@ const Login = () => {
     <div className="w-full flex">
       <Welcome />
       <div className="w-[55%] flex flex-col px-8">
-        <Oauth title="Log in to Your Account" />
-
-        <div className="flex w-full justify-between mt-4">
-          <hr className="w-[47%] text-[#828282] top-[11px] relative" />
-          <p className=" text-base font-medium text-[#828282]">OR</p>
-          <hr className="w-[47%] text-[#828282] top-[11px] relative" />
+        <div className="flex flex-col mt-[5rem] mb-8">
+          <h2 className="font-semibold text-3xl text-[#bd0a0a]">
+            Can't log in?
+          </h2>
+          <p className="text-xl font-medium text-[#656565] w-[87%] mt-4">
+            Enter the email address you used when you created your ODDITOR
+            account, and we'll send you instructions to reset your password.
+          </p>
         </div>
 
         <div className="flex flex-col w-full">
@@ -116,50 +105,6 @@ const Login = () => {
               </Box>
             </div>
 
-            <div className="flex flex-col w-full mt-3">
-              <label className="font-bold text-base mb-2" htmlFor="Password">
-                Password
-              </label>
-              <Box
-                component="form"
-                sx={{
-                  "& > :not(style)": { width: "100%" },
-                }}
-                noValidate
-                autoComplete="off"
-              >
-                <TextField
-                  id="outlined-basic"
-                  label="Password"
-                  variant="outlined"
-                  size="small"
-                  color="success"
-                  type={InputType}
-                  value={pwd}
-                  onChange={(e) => {
-                    const limit = 30;
-
-                    // 👇️ only take first N characters
-                    setPwd(e.target.value.slice(0, limit));
-                  }}
-                  className={twMerge(
-                    "placeholder:text-[#363435] placeholder:text-sm rounded-lg border-[0.6px] border-[#bdbdbd] w-[80%] text-[#363435]"
-                  )}
-                />
-              </Box>
-              <button
-                type="button"
-                onClick={viewer}
-                className="transform -translate-y-1/2 mt-[3.3rem] mx-2 absolute right-[2.5rem]"
-              >
-                {visibility ? (
-                  <EyeOff color="#4b5563" size={20} />
-                ) : (
-                  <Eye color="#4b5563" size={20} />
-                )}
-              </button>
-            </div>
-
             <div className="flex flex-col justify-center items-center mb-4">
               {isPending ? (
                 <div className="flex flex-col w-full p-3 cursor-pointer items-center font-semibold text-[#ffffff] text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer">
@@ -170,7 +115,7 @@ const Login = () => {
                   onClick={() => handleSubmit()}
                   className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
                 >
-                  Login
+                  Send recovery link
                 </div>
               )}
             </div>
@@ -178,22 +123,28 @@ const Login = () => {
             <hr className="w-full text-[#828282] relative mb-4" />
 
             <div className="flex justify-between">
-              <p className="text-[#bd0a0a] text-base font-normal">
-                Can't log in?
-              </p>
-
               <p
-                onClick={() => router.push("/signup")}
+                onClick={() => router.push("/login")}
                 className="text-[#bd0a0a] text-base font-normal cursor-pointer"
               >
-                Sign up for an account
+                Already have a ODDITOR account? Log in
               </p>
             </div>
           </div>
+        </div>
+
+        <div
+          className="mt-6 p-2 rounded-sm"
+          style={{ backgroundColor: "rgba(189, 10, 10, 0.4)" }}
+        >
+          <p className="text-lg">
+            If your email address is known to us, the reset password link has
+            just been sent to example@gmail.com.
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default ForgotPassword;
