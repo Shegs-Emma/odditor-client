@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { FC, useState, useTransition } from "react";
+import React, { ClipboardEvent, FC, useState } from "react";
 
 interface VerifyProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,7 +9,25 @@ interface VerifyProps {
 
 const VerifyEmailPopup: FC<VerifyProps> = () => {
   const [otpInput, setOtpInput] = useState(new Array(5).fill(""));
-  const [isPending, startTransition] = useTransition();
+  // const [isPending, startTransition] = useTransition();
+
+  const handleOtpInputChange = (element: HTMLInputElement, index: number) => {
+    if (isNaN(Number(element.value))) return false;
+
+    setOtpInput([
+      ...otpInput.map((d, idx) => (idx === index ? element.value : d)),
+    ]);
+
+    //focus next input
+    if (element.nextSibling instanceof HTMLInputElement) {
+      element.nextSibling.focus();
+    }
+  };
+
+  const handlePaste = (event: ClipboardEvent<HTMLInputElement>) => {
+    const pasted = event.clipboardData.getData("text/plain");
+    setOtpInput(pasted.split("").slice(0, otpInput.length));
+  };
 
   return (
     <div className="mt-4 w-full bg-white rounded-md flex flex-col">
@@ -43,8 +61,8 @@ const VerifyEmailPopup: FC<VerifyProps> = () => {
                       name="opt"
                       key={index}
                       value={data}
-                      // onChange={(e) => handleOtpInputChange(e.target, index)}
-                      // onPaste={handlePaste}
+                      onChange={(e) => handleOtpInputChange(e.target, index)}
+                      onPaste={handlePaste}
                       onFocus={(e) => e.target.select()}
                     />
                   );
@@ -66,18 +84,18 @@ const VerifyEmailPopup: FC<VerifyProps> = () => {
           </p>
 
           <div className="flex flex-col justify-center items-center mb-4">
-            {isPending ? (
+            {/* {isPending ? (
               <div className="flex flex-col w-full p-3 cursor-pointer items-center font-semibold text-[#ffffff] text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer">
                 loading....
               </div>
-            ) : (
-              <div
-                //   onClick={() => handleSubmit()}
-                className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
-              >
-                Verify
-              </div>
-            )}
+            ) : ( */}
+            <div
+              //   onClick={() => handleSubmit()}
+              className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
+            >
+              Verify
+            </div>
+            {/* )} */}
           </div>
         </div>
       </div>

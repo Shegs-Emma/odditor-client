@@ -1,27 +1,27 @@
 "use client";
 
-import React, { useState, useTransition } from "react";
+import React, { useState } from "react";
 import Welcome from "@/components/reusables/welcome";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { twMerge } from "tailwind-merge";
 import PasswordChecklist from "react-password-checklist";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 
 const ResetPassword = () => {
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  // const router = useRouter();
+  // const [isPending, startTransition] = useTransition();
   const [pwd, setPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
   const [visibility, setVisibility] = useState(false);
   const [visibilityConfirm, setVisibilityConfirm] = useState(false);
-  const [formValues, setFormValues] = useState({
-    password: "",
-  });
-  const [errorFields, setErrorFields] = useState({
-    password: false,
-  });
+  // const [formValues, setFormValues] = useState({
+  //   password: "",
+  // });
+  // const [errorFields, setErrorFields] = useState({
+  //   password: false,
+  // });
 
   const InputType = visibility ? "text" : "password";
   const InputTypeConfirm = visibilityConfirm ? "text" : "password";
@@ -35,21 +35,21 @@ const ResetPassword = () => {
   };
 
   // Handle change code ========================================================================================================================
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { name, value } = e.target;
 
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
+  //   setFormValues({
+  //     ...formValues,
+  //     [name]: value,
+  //   });
 
-    if (value.trim() !== "") {
-      setErrorFields({
-        ...errorFields,
-        [name]: false,
-      });
-    }
-  };
+  //   if (value.trim() !== "") {
+  //     setErrorFields({
+  //       ...errorFields,
+  //       [name]: false,
+  //     });
+  //   }
+  // };
 
   const handleSubmit = () => {
     // try {
@@ -211,18 +211,18 @@ const ResetPassword = () => {
             )}
 
             <div className="flex flex-col justify-center items-center mb-4">
-              {isPending ? (
+              {/* {isPending ? (
                 <div className="flex flex-col w-full p-3 cursor-pointer items-center font-semibold text-[#ffffff] text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer">
                   loading....
                 </div>
-              ) : (
-                <div
-                  onClick={() => handleSubmit()}
-                  className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
-                >
-                  Change password
-                </div>
-              )}
+              ) : ( */}
+              <div
+                onClick={() => handleSubmit()}
+                className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
+              >
+                Change password
+              </div>
+              {/* )} */}
             </div>
           </div>
         </div>

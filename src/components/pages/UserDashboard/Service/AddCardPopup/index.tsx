@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { FC, useState, useTransition } from "react";
+import React, { FC } from "react";
 import { FaStarOfLife } from "react-icons/fa";
 
 interface VerifyProps {
