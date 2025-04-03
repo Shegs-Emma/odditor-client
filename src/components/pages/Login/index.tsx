@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useTransition } from "react";
+import React, { useState } from "react";
 import Oauth from "@/components/reusables/oauth";
 import Welcome from "@/components/reusables/welcome";
 import Box from "@mui/material/Box";
@@ -11,8 +11,8 @@ import { useRouter } from "next/navigation";
 
 const Login = () => {
   const router = useRouter();
-  const [isPending, startTransition] = useTransition();
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  // const [isPending, startTransition] = useTransition();
+  // const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const [pwd, setPwd] = useState("");
   const [visibility, setVisibility] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -161,25 +161,25 @@ const Login = () => {
             </div>
 
             <div className="flex flex-col justify-center items-center mb-4">
-              {isPending ? (
+              {/* {isPending ? (
                 <div className="flex flex-col w-full p-3 cursor-pointer items-center font-semibold text-[#ffffff] text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer">
                   loading....
                 </div>
-              ) : (
-                <div
-                  onClick={() => handleSubmit()}
-                  className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
-                >
-                  Login
-                </div>
-              )}
+              ) : ( */}
+              <div
+                onClick={() => handleSubmit()}
+                className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
+              >
+                Login
+              </div>
+              {/* )} */}
             </div>
 
             <hr className="w-full text-[#828282] relative mb-4" />
 
             <div className="flex justify-between">
               <p className="text-[#bd0a0a] text-base font-normal">
-                Can't log in?
+                {"Can't log in?"}
               </p>
 
               <p

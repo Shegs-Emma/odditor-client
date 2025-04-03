@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useTransition } from "react";
+import React, { useState } from "react";
 import Welcome from "@/components/reusables/welcome";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 const ForgotPassword = () => {
   const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  // const [isPending, startTransition] = useTransition();
   const [formValues, setFormValues] = useState({
     email: "",
   });
@@ -63,11 +63,13 @@ const ForgotPassword = () => {
       <div className="w-[55%] flex flex-col px-8">
         <div className="flex flex-col mt-[5rem] mb-8">
           <h2 className="font-semibold text-3xl text-[#bd0a0a]">
-            Can't log in?
+            {/* Can't log in? */}
+            {"Can't log in?"}
           </h2>
           <p className="text-xl font-medium text-[#656565] w-[87%] mt-4">
-            Enter the email address you used when you created your ODDITOR
-            account, and we'll send you instructions to reset your password.
+            {
+              "Enter the email address you used when you created your ODDITOR account, and we'll send you instructions to reset your password."
+            }
           </p>
         </div>
 
@@ -106,18 +108,18 @@ const ForgotPassword = () => {
             </div>
 
             <div className="flex flex-col justify-center items-center mb-4">
-              {isPending ? (
+              {/* {isPending ? (
                 <div className="flex flex-col w-full p-3 cursor-pointer items-center font-semibold text-[#ffffff] text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer">
                   loading....
                 </div>
-              ) : (
-                <div
-                  onClick={() => handleSubmit()}
-                  className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
-                >
-                  Send recovery link
-                </div>
-              )}
+              ) : ( */}
+              <div
+                onClick={() => handleSubmit()}
+                className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
+              >
+                Send recovery link
+              </div>
+              {/* )} */}
             </div>
 
             <hr className="w-full text-[#828282] relative mb-4" />

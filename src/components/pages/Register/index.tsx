@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useTransition } from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import PasswordChecklist from "react-password-checklist";
@@ -23,8 +23,8 @@ import VerifyEmailPopup from "@/components/popups/verifyEmailPopup";
 const Register = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [isPending, startTransition] = useTransition();
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  // const [isPending, startTransition] = useTransition();
+  // const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const [pwd, setPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
   const [visibility, setVisibility] = useState(false);
@@ -74,28 +74,28 @@ const Register = () => {
     }
   };
 
-  const handleSubmit = () => {
-    // try {
-    //   // if (!passwordValid) return;
-    //   if (pwd !== confirmPwd) return;
-    //   const toastId = toast.loading("Creating account");
-    //   const payload = {
-    //     ...formValues,
-    //     password: pwd,
-    //   };
-    //   startTransition(async () => {
-    //     try {
-    //       await register(payload, router);
-    //       toast.success("Created successfully", { id: toastId });
-    //     } catch (err) {
-    //       console.error("Error in:", err);
-    //       toast.error("Created failed", { id: toastId });
-    //     }
-    //   });
-    // } catch (err) {
-    //   return err;
-    // }
-  };
+  // const handleSubmit = () => {
+  // try {
+  //   // if (!passwordValid) return;
+  //   if (pwd !== confirmPwd) return;
+  //   const toastId = toast.loading("Creating account");
+  //   const payload = {
+  //     ...formValues,
+  //     password: pwd,
+  //   };
+  //   startTransition(async () => {
+  //     try {
+  //       await register(payload, router);
+  //       toast.success("Created successfully", { id: toastId });
+  //     } catch (err) {
+  //       console.error("Error in:", err);
+  //       toast.error("Created failed", { id: toastId });
+  //     }
+  //   });
+  // } catch (err) {
+  //   return err;
+  // }
+  // };
   return (
     <div className="w-full flex">
       <Welcome />
@@ -364,21 +364,21 @@ const Register = () => {
               )}
 
               <div className="flex flex-col justify-center items-center mb-8">
-                {isPending ? (
+                {/* {isPending ? (
                   <div className="flex flex-col w-full p-3 cursor-pointer items-center font-semibold text-[#ffffff] text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer">
                     loading....
                   </div>
-                ) : (
-                  <div
-                    // onClick={() => handleSubmit()}
-                    onClick={() => {
-                      setIsOpen(true);
-                    }}
-                    className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
-                  >
-                    Sign up
-                  </div>
-                )}
+                ) : ( */}
+                <div
+                  // onClick={() => handleSubmit()}
+                  onClick={() => {
+                    setIsOpen(true);
+                  }}
+                  className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
+                >
+                  Sign up
+                </div>
+                {/* )} */}
 
                 <p
                   // onClick={() => router.push("/login")}
