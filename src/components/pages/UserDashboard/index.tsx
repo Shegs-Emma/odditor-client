@@ -6,6 +6,7 @@ import AuthNavbar from "@/components/reusables/authNavbar";
 import Dashboard from "./Dashboard";
 import Inbox from "./Inbox";
 import Profile from "./Profile";
+import Service from "./Service";
 
 const UserDashboard = () => {
   const [isViewing, setIsViewing] = useState<string>("dashboard");
@@ -22,6 +23,7 @@ const UserDashboard = () => {
         {isViewing === "dashboard" && <Dashboard />}
         {isViewing === "inbox" && <Inbox />}
         {isViewing === "profile" && <Profile />}
+        {isViewing === "service" && <Service />}
       </div>
     </div>
   );
