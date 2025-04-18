@@ -1,10 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { FC } from "react";
 import { GoSearch, GoChevronDown, GoBell } from "react-icons/go";
 import Image from "next/image";
 
-const AuthNavbar = () => {
+interface NavbarProps {
+  isAdmin?: boolean | undefined;
+}
+
+const AuthNavbar: FC<NavbarProps> = ({ isAdmin }) => {
   return (
     <div className="w-full flex h-[70px] shadow-md pt-4">
       <div className="flex w-[80%] ml-auto justify-between">
@@ -29,17 +33,37 @@ const AuthNavbar = () => {
           <div className="flex justify-center items-center mx-2">
             <GoBell className="text-[#C1C1C1] ml-2 pr-1 w-[34px] h-[34px]" />
           </div>
-          <div className="flex justify-center items-center">
-            <Image
-              src="/assets/pp.svg"
-              alt="avatar_img"
-              width={42}
-              height={42}
-            />
-            <p className="font-semibold text-sm text-[#000000] ml-2">
-              Mary Johnson
-            </p>
-          </div>
+
+          {!isAdmin ? (
+            <div className="flex justify-center items-center">
+              <Image
+                src="/assets/pp.svg"
+                alt="avatar_img"
+                width={42}
+                height={42}
+              />
+              <p className="font-semibold text-sm text-[#000000] ml-2">
+                Mary Johnson
+              </p>
+            </div>
+          ) : (
+            <div className="flex justify-center items-center">
+              <Image
+                src="/assets/odditor_logo.svg"
+                alt="avatar_img"
+                width={42}
+                height={42}
+              />
+              <div className="flex flex-col">
+                <p className="font-semibold text-sm text-[#000000] ml-2">
+                  Mary Johnson
+                </p>
+                <p className="font-normal italic text-xs text-[#727272] ml-2">
+                  Admin
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
