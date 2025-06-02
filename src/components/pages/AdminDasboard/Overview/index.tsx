@@ -11,8 +11,8 @@ const Overview = () => {
   return (
     <div className="flex w-full">
       <div className="flex flex-col">
-        <div className="flex m-12 justify-between w-full mr-auto">
-          <div className="flex justify-center items-center w-[220px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
+        <div className="flex ml-6 my-12 justify-between w-full mr-auto">
+          <div className="flex justify-center items-center w-[210px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
             <Image
               src="/assets/overview_icon.svg"
               alt="avatar_img"
@@ -25,7 +25,7 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center w-[220px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
+          <div className="flex justify-center items-center w-[210px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
             <Image
               src="/assets/overview_icon.svg"
               alt="avatar_img"
@@ -38,7 +38,7 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center w-[220px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
+          <div className="flex justify-center items-center w-[210px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
             <Image
               src="/assets/overview_icon.svg"
               alt="avatar_img"
@@ -51,7 +51,7 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center w-[220px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
+          <div className="flex justify-center items-center w-[210px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
             <Image
               src="/assets/overview_icon.svg"
               alt="avatar_img"
@@ -66,7 +66,7 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center w-[220px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
+          <div className="flex justify-center items-center w-[210px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
             <Image
               src="/assets/overview_icon.svg"
               alt="avatar_img"
@@ -82,7 +82,7 @@ const Overview = () => {
           </div>
         </div>
 
-        <div className="flex pl-[3rem] justify-between">
+        <div className="flex pl-[2rem] justify-between">
           <div className="w-[42rem] h-[351px] border-[1px] border-[rgba(189,10,10,0.23)] rounded-sm">
             <div className="flex border-b-[1px] border-b-[#EAEBEB] justify-between py-4 px-8">
               <p className="font-semibold text-base text-[#000000]">Revenue</p>
@@ -98,7 +98,7 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="w-[25rem] flex h-[228px] border-[1px] border-[rgba(189,10,10,0.23)] rounded-sm">
+          <div className="w-[25rem] flex h-[228px] border-[1px] border-[rgba(189,10,10,0.23)] ml-8 rounded-sm">
             <div>
               <PieChart />
             </div>
@@ -123,10 +123,10 @@ const Overview = () => {
         </div>
 
         <div className="flex flex-col w-[900px] mt-12 mb-8">
-          <p className="font-normal text-[12px] pl-[3rem] text-[#000000]">
+          <p className="font-normal text-[12px] pl-[2rem] text-[#000000]">
             Number of Users
           </p>
-          <div className="pl-5 mt-8">
+          <div className="pl-3 mt-8">
             <CustomLineChart />
           </div>
         </div>

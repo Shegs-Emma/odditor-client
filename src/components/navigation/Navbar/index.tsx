@@ -4,6 +4,8 @@ import React from "react";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import VerticalDivider from "@/components/reusables/vericalDivider";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { FaBars } from "react-icons/fa6";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -15,13 +17,22 @@ const Navbar = () => {
   const router = useRouter();
   return (
     <div
-      className="w-full py-8 pl-12 pr-10 flex justify-between"
+      className="w-full py-4 md:py-8 pl-4 md:pl-12 pr-4 md:pr-10 flex justify-between bg-[#BD0A0A] md:bg-[#ffffff]"
       style={{ fontFamily: plusJakartaSans.style.fontFamily }}
     >
-      <div className="flex font-bold text-lg text-[#1a202c] w-[20%] font-plus-jk-sans">
+      <div className="flex font-bold text-lg text-[#1a202c] w-[20%] font-plus-jk-sans hidden md:block">
         OdditorLogo
       </div>
-      <div className="flex w-[80%]">
+      <div className="flex font-bold text-lg text-[#1a202c] w-[20%] font-plus-jk-sans flex md:hidden">
+        <Image
+          src="/assets/odditor_logo_white.svg"
+          alt="avatar_img"
+          width={34}
+          height={34}
+        />
+      </div>
+
+      <div className="flex w-[80%] hidden md:block">
         <div className="w-full flex justify-between">
           <div className="flex justify-between w-[60%] ml-[15%] mt-1">
             <p className="font-bold text-sm text-[#a82d28]">Home</p>
@@ -46,6 +57,14 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="flex md:hidden">
+        <FaBars
+          className="flex items-center justify-center mt-1"
+          color="#ffffff"
+          size={20}
+        />
       </div>
     </div>
   );

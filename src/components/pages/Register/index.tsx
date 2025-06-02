@@ -19,6 +19,7 @@ import {
   DialogTrigger,
 } from "../../ui/dialog";
 import VerifyEmailPopup from "@/components/popups/verifyEmailPopup";
+import Image from "next/image";
 
 const Register = () => {
   const router = useRouter();
@@ -99,7 +100,24 @@ const Register = () => {
   return (
     <div className="w-full flex">
       <Welcome />
-      <div className="w-[55%] flex flex-col px-8">
+      <div className="w-full md:w-[55%] flex flex-col px-3 md:px-8">
+        <div className="flex flex-col w-full items-center justify-center block md:hidden mt-12">
+          <Image
+            src="/assets/empty_logo.svg"
+            alt="avatar_img"
+            width={80}
+            height={80}
+          />
+          <h1 className="font-medium text-2xl text-[#000000] my-4">
+            Welcome to The Odditor
+          </h1>
+          <p className="text-xs font-normal italic text-[#000000] text-center mb-4">
+            Log in to access your dashboard, where you can manage your services,
+            schedule appointments, or view fair price estimates. Enter your
+            details below to get started.
+          </p>
+        </div>
+
         <Oauth title="Signup" />
 
         <div className="flex w-full justify-between mt-4">
@@ -109,7 +127,7 @@ const Register = () => {
         </div>
 
         <div className="flex flex-col w-full">
-          <h2 className="font-bold text-xl text-[#000000] my-4">
+          <h2 className="font-bold text-base md:text-xl text-[#000000] my-4">
             Account Type
           </h2>
 
@@ -137,9 +155,9 @@ const Register = () => {
             </div>
 
             <div className="flex flex-col w-full mt-8">
-              <div className="flex flex-col w-full">
+              <div className="flex flex-col w-full mb-2">
                 <label
-                  className="font-bold text-base mb-2"
+                  className="font-bold text-sm md:text-base mb-2"
                   htmlFor="Email Address"
                 >
                   Email Address
@@ -169,9 +187,12 @@ const Register = () => {
                 </Box>
               </div>
 
-              <div className="flex w-full mt-3 justify-between">
+              <div className="flex w-full mt-3 justify-between mb-2">
                 <div className="w-[47%]">
-                  <label className="font-bold text-base mb-2" htmlFor="Name">
+                  <label
+                    className="font-bold text-sm md:text-base mb-2"
+                    htmlFor="Name"
+                  >
                     Name
                   </label>
                   <Box
@@ -227,8 +248,11 @@ const Register = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col w-full mt-3">
-                <label className="font-bold text-base mb-2" htmlFor="Password">
+              <div className="flex flex-col w-full mt-3 mb-2">
+                <label
+                  className="font-bold text-sm md:text-base mb-2"
+                  htmlFor="Password"
+                >
                   Password
                 </label>
                 <Box
@@ -261,7 +285,7 @@ const Register = () => {
                 <button
                   type="button"
                   onClick={viewer}
-                  className="transform -translate-y-1/2 mt-[3.3rem] mx-2 absolute right-[2.5rem]"
+                  className="transform -translate-y-1/2 mt-[3rem] mx-2 absolute right-[1.2rem]"
                 >
                   {visibility ? (
                     <EyeOff color="#4b5563" size={20} />
@@ -271,9 +295,9 @@ const Register = () => {
                 </button>
               </div>
 
-              <div className="flex flex-col w-full mt-6">
+              <div className="flex flex-col w-full mt-6 mb-2">
                 <label
-                  className=" font-bold text-base mb-2"
+                  className=" font-bold text-sm md:text-base mb-2"
                   htmlFor="Confirm Password"
                 >
                   Confirm Password
@@ -318,7 +342,7 @@ const Register = () => {
                   )}
                 </button>
                 <div className="w-full flex">
-                  <p className=" font-bold text-sm text-[#4f4f4f] mt-2">
+                  <p className=" font-bold text-xs md:text-sm text-[#4f4f4f] mt-2">
                     By continuing, you agree to our 
                     <span className="underline text-[#bd0a0a]">
                       Terms of Use
@@ -382,7 +406,7 @@ const Register = () => {
 
                 <p
                   // onClick={() => router.push("/login")}
-                  className="font-montserrat text-base font-semibold text-[#4f4f4f] cursor-pointer"
+                  className="font-montserrat text-sm md:text-base font-semibold text-[#4f4f4f] cursor-pointer"
                 >
                   Already have a ODDITOR account?{" "}
                   <span
@@ -392,6 +416,14 @@ const Register = () => {
                     Sign in
                   </span>
                 </p>
+              </div>
+
+              <div className="flex w-full justify-between px-4 mb-6 mt-4 block md:hidden">
+                <p className="underline text-sm text-[#1877F2]">Terms of use</p>
+                <p className="underline text-sm text-[#1877F2]">
+                  Privacy Policy
+                </p>
+                <p className="underline text-sm text-[#1877F2]">Contact</p>
               </div>
             </div>
           </div>

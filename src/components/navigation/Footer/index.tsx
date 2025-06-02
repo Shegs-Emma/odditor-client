@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col w-full bg-[#D3DCE7] pt-[4rem]">
+    <div className="hidden md:flex flex-col w-full bg-[#D3DCE7] pt-[4rem]">
       <div className="">
         <div className="flex justify-between w-[92%] mx-auto">
           <div className="flex flex-col w-[27%]">

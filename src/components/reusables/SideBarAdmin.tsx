@@ -191,16 +191,16 @@ const SideBarAdmin: FC<sidebarAdminProps> = ({ viewing }) => {
               isViewing === "availability" ? "bg-[#ffffff]" : ""
             }`}
           >
-            {isViewing === "availability" ? (
+            {isViewing === "user_management" ? (
               <Image
-                src="/assets/availability.svg"
+                src="/assets/profile.svg"
                 alt="avatar_img"
                 width={20}
                 height={20}
               />
             ) : (
               <Image
-                src="/assets/availability_white.svg"
+                src="/assets/profile_white.svg"
                 alt="avatar_img"
                 width={20}
                 height={20}
@@ -208,12 +208,45 @@ const SideBarAdmin: FC<sidebarAdminProps> = ({ viewing }) => {
             )}
             <p
               className={`font-normal text-sm ml-4 ${
-                isViewing === "availability"
+                isViewing === "user_management"
                   ? "text-[#BD0A0A]"
                   : "text-[#ffffff]"
               }`}
             >
-              Availability
+              User Management
+            </p>
+          </div>
+
+          <div
+            onClick={() => {
+              handleIsViewing("settings");
+              setIsViewingPM(false);
+            }}
+            className={`w-full flex p-4 cursor-pointer ${
+              isViewing === "settings" ? "bg-[#ffffff]" : ""
+            }`}
+          >
+            {isViewing === "settings" ? (
+              <Image
+                src="/assets/settings.svg"
+                alt="avatar_img"
+                width={20}
+                height={20}
+              />
+            ) : (
+              <Image
+                src="/assets/settings.svg"
+                alt="avatar_img"
+                width={20}
+                height={20}
+              />
+            )}
+            <p
+              className={`font-normal text-sm ml-4 ${
+                isViewing === "settings" ? "text-[#BD0A0A]" : "text-[#ffffff]"
+              }`}
+            >
+              Settings
             </p>
           </div>
         </div>
