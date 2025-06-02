@@ -4,7 +4,7 @@ import React from "react";
 const Welcome = () => {
   return (
     <div
-      className="relative min-h-screen bg-cover bg-center w-[45%]"
+      className="relative min-h-screen bg-cover bg-center w-[45%] hidden md:block"
       style={{ backgroundImage: "url('/assets/home_image.svg')" }}
     >
       <div
