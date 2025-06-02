@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import VerticalDivider from "@/components/reusables/vericalDivider";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { FaBars } from "react-icons/fa6";
+import { RxCross1 } from "react-icons/rx";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -15,6 +16,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 const Navbar = () => {
   const router = useRouter();
+  const [isShowing, setIsShowing] = useState<boolean>(false);
+
   return (
     <div
       className="w-full py-4 md:py-8 pl-4 md:pl-12 pr-4 md:pr-10 flex justify-between bg-[#BD0A0A] md:bg-[#ffffff]"
@@ -64,8 +67,98 @@ const Navbar = () => {
           className="flex items-center justify-center mt-1"
           color="#ffffff"
           size={20}
+          onClick={() => setIsShowing(!isShowing)}
         />
       </div>
+
+      {isShowing && (
+        <div className="fixed absolute z-100 w-[95%] flex flex-col">
+          <div className="flex justify-between bg-[#ffffff] w-full p-4">
+            <div className="flex">
+              <Image
+                src="/assets/red_logo.svg"
+                alt="avatar_img"
+                width={34}
+                height={34}
+              />
+
+              <p className="text-lg text-[#BD0A0A] flex justify-center items-center ml-6 font-semibold">
+                ODDITOR
+              </p>
+            </div>
+
+            <RxCross1
+              onClick={() => setIsShowing(!isShowing)}
+              color="#BD0A0A"
+              size={25}
+            />
+          </div>
+          <div className="bg-[#BD0A0A] p-2 flex flex-col">
+            <div className="flex flex-col">
+              <div className="flex border-b-[1px] border-b-[#ffffff] pb-2 mb-4">
+                <p className="text-sm text-[#ffffff] font-bold">Home</p>
+              </div>
+
+              <div className="flex border-b-[1px] border-b-[#ffffff] pb-2  mb-4">
+                <p className="text-sm text-[#ffffff] font-bold">About Us</p>
+              </div>
+
+              <div className="flex border-b-[1px] border-b-[#ffffff] pb-2  mb-4">
+                <p className="text-sm text-[#ffffff] font-bold">How It Works</p>
+              </div>
+
+              <div className="flex border-b-[1px] border-b-[#ffffff] pb-2  mb-4">
+                <p className="text-sm text-[#ffffff] font-bold">Testimonials</p>
+              </div>
+
+              <div className="flex border-b-[1px] border-b-[#ffffff] pb-2  mb-4">
+                <p className="text-sm text-[#ffffff] font-bold">Contact Us</p>
+              </div>
+            </div>
+
+            <div className="flex flex-col mt-[8rem]">
+              <button className="w-full bg-[#ffffff] rounded text-sm text-[#BD0A0A] font-semibold flex items-center justify-center p-3 mb-6">
+                Login
+              </button>
+
+              <button className="w-full border-[#ffffff] border-[1px] rounded text-sm text-[#ffffff] font-semibold flex items-center justify-center p-3">
+                Register
+              </button>
+            </div>
+
+            <div className="flex justify-between w-[7rem] my-6 mx-auto">
+              <Image
+                src="/assets/white_facebook.svg"
+                alt="avatar_img"
+                width={7}
+                height={14}
+              />
+
+              <Image
+                src="/assets/white_twitter.svg"
+                alt="avatar_img"
+                width={16}
+                height={16}
+              />
+
+              <Image
+                src="/assets/white_instagram.svg"
+                alt="avatar_img"
+                width={16}
+                height={16}
+              />
+            </div>
+
+            <div className="flex flex-col justify-center items-center mt-4 w-full mx-auto">
+              <div className="flex mb-4">
+                <p className="font-normal text-xs text-[#ffffff]">
+                  ©2025 Odditor. All rights reserved
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
