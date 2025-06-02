@@ -32,11 +32,52 @@ const cards = [
   },
 ];
 
+const testimonials = [
+  {
+    name: "Viezh Robert",
+    location: "Warsaw, Poland",
+    rating: "4.5",
+    comment:
+      "“Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best”.",
+  },
+  {
+    name: "Viezh Robert",
+    location: "Warsaw, Poland",
+    rating: "4.5",
+    comment:
+      "“Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best”.",
+  },
+  {
+    name: "Viezh Robert",
+    location: "Warsaw, Poland",
+    rating: "4.5",
+    comment:
+      "“Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best”.",
+  },
+  {
+    name: "Viezh Robert",
+    location: "Warsaw, Poland",
+    rating: "4.5",
+    comment:
+      "“Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best”.",
+  },
+];
+
 const Landing = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
+  const [emblaRefTes, emblaApiTes] = useEmblaCarousel({ loop: false });
 
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi);
+  const {
+    selectedIndex: selectedIndexMain,
+    scrollSnaps: scrollSnapsMain,
+    onDotButtonClick: onDotButtonClickMain,
+  } = useDotButton(emblaApi);
+
+  const {
+    selectedIndex: selectedIndexTes,
+    scrollSnaps: scrollSnapsTes,
+    onDotButtonClick: onDotButtonClickTes,
+  } = useDotButton(emblaApiTes);
 
   return (
     <div className="w-full flex flex-col mb-12">
@@ -291,39 +332,6 @@ const Landing = () => {
         </div>
 
         {/* mobile view */}
-
-        {/* <div className="max-w-screen-md mx-auto md:hidden flex flex-col  overflow-x-hidden">
-          <div
-            ref={containerRef}
-            className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar space-x-4 px-4"
-          >
-            {cards.map((card, i) => (
-              <div
-                key={i}
-                className="w-[50%] snap-start bg-gradient-to-b from-gray-100 to-white rounded-xl p-4 flex-shrink-0 shadow"
-              >
-                <div className="bg-gray-300 rounded-md h-32 mb-4" />
-                <h3 className="text-lg font-bold text-red-600">{card.title}</h3>
-                <p className="text-sm text-gray-600">{card.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex justify-left ml-[30%] mt-4 gap-3">
-            {cards.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => scrollToIndex(i)}
-                className={clsx(
-                  "w-3 h-3 rounded-full bg-red-500 transition-all duration-300",
-                  {
-                    "opacity-100 shadow-lg scale-125": i === activeIndex,
-                    "opacity-50": i !== activeIndex,
-                  }
-                )}
-              />
-            ))}
-          </div>
-        </div> */}
         <div className="flex flex-col items-center justify-between overflow-hidden @container md:hidden">
           <div className="flex-1 overflow-hidden" ref={emblaRef}>
             <div className="flex">
@@ -344,12 +352,12 @@ const Landing = () => {
 
           <div className="flex">
             <div className="flex mt-8">
-              {scrollSnaps.map((_, index) => (
+              {scrollSnapsMain.map((_, index) => (
                 <DotButton
                   key={index}
-                  onClick={() => onDotButtonClick(index)}
+                  onClick={() => onDotButtonClickMain(index)}
                   className={"embla__dot".concat(
-                    index === selectedIndex ? " embla__dot--selected" : ""
+                    index === selectedIndexMain ? " embla__dot--selected" : ""
                   )}
                 />
               ))}
@@ -442,38 +450,53 @@ const Landing = () => {
           </div>
         </div>
 
-        {/* <div className="max-w-screen-md mx-auto md:hidden flex flex-col  overflow-x-hidden">
-          <div
-            ref={containerRef}
-            className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar space-x-4 px-4"
-          >
-            {cards.map((card, i) => (
-              <div
-                key={i}
-                className="w-[50%] snap-start bg-gradient-to-b from-gray-100 to-white rounded-xl p-4 flex-shrink-0 shadow"
-              >
-                <div className="bg-gray-300 rounded-md h-32 mb-4" />
-                <h3 className="text-lg font-bold text-red-600">{card.title}</h3>
-                <p className="text-sm text-gray-600">{card.desc}</p>
-              </div>
-            ))}
+        <div className="flex flex-col items-center justify-between overflow-hidden @container md:hidden">
+          <div className="flex-1 overflow-hidden" ref={emblaRefTes}>
+            <div className="flex">
+              {testimonials.map((testimony, i) => (
+                <div
+                  key={i}
+                  className="w-[350px] snap-start px-4 py-8 bg-[#D3DCE7] flex flex-col rounded-[10px] ml-4"
+                >
+                  <div className="flex w-[70%] mx-auto justify-between">
+                    <div className="flex flex-col">
+                      <p className="font-semibold text-base text-[#486284]">
+                        {testimony?.name}
+                      </p>
+                      <p className="font-normal text-xs text-[#486284]">
+                        {testimony?.location}
+                      </p>
+                    </div>
+                    <p className="font-normal text-sm text-[#486284] items-center justify-center flex">
+                      {testimony?.rating}
+                    </p>
+                  </div>
+
+                  <div
+                    className="font-medium text-sm text-[#486284] mt-4"
+                    style={{ fontFamily: rubik.style.fontFamily }}
+                  >
+                    {testimony?.comment}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="flex justify-left ml-[30%] mt-4 gap-3">
-            {cards.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => scrollToIndex(i)}
-                className={clsx(
-                  "w-3 h-3 rounded-full bg-red-500 transition-all duration-300",
-                  {
-                    "opacity-100 shadow-lg scale-125": i === activeIndex,
-                    "opacity-50": i !== activeIndex,
-                  }
-                )}
-              />
-            ))}
+
+          <div className="flex">
+            <div className="flex mt-8">
+              {scrollSnapsTes.map((_, index) => (
+                <DotButton
+                  key={index}
+                  onClick={() => onDotButtonClickTes(index)}
+                  className={"embla__dot".concat(
+                    index === selectedIndexTes ? " embla__dot--selected" : ""
+                  )}
+                />
+              ))}
+            </div>
           </div>
-        </div> */}
+        </div>
       </div>
 
       <div className="flex flex-col w-full pt-[4rem] mb-[10rem]">
