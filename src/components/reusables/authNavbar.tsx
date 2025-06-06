@@ -10,7 +10,7 @@ interface NavbarProps {
 
 const AuthNavbar: FC<NavbarProps> = ({ isAdmin }) => {
   return (
-    <div className="w-full flex h-[70px] shadow-md pt-4">
+    <div className="w-full hidden md:flex h-[70px] shadow-md pt-4">
       <div className="flex w-[80%] ml-auto justify-between">
         <div className="flex items-center border-[#eeeeee] border-[1px] rounded-[41px] px-3 py-2 shadow-sm w-[400px] h-[42px]">
           <GoSearch className="text-gray-500" />

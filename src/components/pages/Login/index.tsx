@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import { twMerge } from "tailwind-merge";
 import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Login = () => {
   const router = useRouter();
@@ -73,7 +74,23 @@ const Login = () => {
   return (
     <div className="w-full flex">
       <Welcome />
-      <div className="w-[55%] flex flex-col px-8">
+      <div className="w-full md:w-[55%] flex flex-col px-8">
+        <div className="flex flex-col w-full items-center justify-center block md:hidden mt-12">
+          <Image
+            src="/assets/empty_logo.svg"
+            alt="avatar_img"
+            width={80}
+            height={80}
+          />
+          <h1 className="font-medium text-2xl text-[#000000] my-4">
+            Welcome to The Odditor
+          </h1>
+          <p className="text-xs font-normal italic text-[#000000] text-center mb-4">
+            Log in to access your dashboard, where you can manage your services,
+            schedule appointments, or view fair price estimates. Enter your
+            details below to get started.
+          </p>
+        </div>
         <Oauth title="Log in to Your Account" />
 
         <div className="flex w-full justify-between mt-4">
@@ -189,6 +206,11 @@ const Login = () => {
                 Sign up for an account
               </p>
             </div>
+          </div>
+          <div className="flex w-full justify-between px-4 mb-6 mt-12 block md:hidden">
+            <p className="underline text-sm text-[#1877F2]">Terms of use</p>
+            <p className="underline text-sm text-[#1877F2]">Privacy Policy</p>
+            <p className="underline text-sm text-[#1877F2]">Contact</p>
           </div>
         </div>
       </div>

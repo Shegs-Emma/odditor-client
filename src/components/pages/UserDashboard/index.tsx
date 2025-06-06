@@ -7,6 +7,10 @@ import Dashboard from "./Dashboard";
 import Inbox from "./Inbox";
 import Profile from "./Profile";
 import Service from "./Service";
+import AuthNavbarMobile from "@/components/reusables/authNavbarMobile";
+import MobileInbox from "./Inbox/MobileInbox";
+import MobileProfile from "./Profile/MobileProfile";
+import MobileService from "./Service/MobileService";
 
 const UserDashboard = () => {
   const [isViewing, setIsViewing] = useState<string>("dashboard");
@@ -20,10 +24,14 @@ const UserDashboard = () => {
       <SideBar viewing={handleViewing} />
       <div className="flex flex-col w-full">
         <AuthNavbar />
+        <AuthNavbarMobile viewing={handleViewing} />
         {isViewing === "dashboard" && <Dashboard />}
         {isViewing === "inbox" && <Inbox />}
+        {isViewing === "inbox" && <MobileInbox />}
         {isViewing === "profile" && <Profile />}
+        {isViewing === "profile" && <MobileProfile />}
         {isViewing === "service" && <Service />}
+        {isViewing === "service" && <MobileService />}
       </div>
     </div>
   );
