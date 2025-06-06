@@ -8,6 +8,7 @@ import { twMerge } from "tailwind-merge";
 import PasswordChecklist from "react-password-checklist";
 // import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
+import Image from "next/image";
 
 const ResetPassword = () => {
   // const router = useRouter();
@@ -77,9 +78,17 @@ const ResetPassword = () => {
   return (
     <div className="w-full flex">
       <Welcome />
-      <div className="w-[55%] flex flex-col px-8">
-        <div className="flex flex-col mt-[10rem] mb-8">
-          <h2 className="font-semibold text-3xl text-[#bd0a0a]">
+      <div className="w-full md:w-[55%] flex flex-col px-8">
+        <div className="flex flex-col w-full items-center justify-center block md:hidden mt-12">
+          <Image
+            src="/assets/empty_logo.svg"
+            alt="avatar_img"
+            width={80}
+            height={80}
+          />
+        </div>
+        <div className="flex flex-col mt-[4rem] md:mt-[10rem] mb-8 text-center md:text-left">
+          <h2 className="font-semibold text-xl md:text-3xl text-[#bd0a0a]">
             Change your password
           </h2>
         </div>

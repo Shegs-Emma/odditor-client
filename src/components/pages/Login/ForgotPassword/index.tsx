@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { twMerge } from "tailwind-merge";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const ForgotPassword = () => {
   const router = useRouter();
@@ -60,13 +61,21 @@ const ForgotPassword = () => {
   return (
     <div className="w-full flex">
       <Welcome />
-      <div className="w-[55%] flex flex-col px-8">
-        <div className="flex flex-col mt-[5rem] mb-8">
-          <h2 className="font-semibold text-3xl text-[#bd0a0a]">
-            {/* Can't log in? */}
+      <div className="w-full md:w-[55%] flex flex-col px-8">
+        <div className="flex flex-col w-full items-center justify-center block md:hidden mt-12">
+          <Image
+            src="/assets/empty_logo.svg"
+            alt="avatar_img"
+            width={80}
+            height={80}
+          />
+        </div>
+
+        <div className="flex flex-col mt-[5rem] mb-8 text-center md:text-left">
+          <h2 className="font-semibold text-xl md:text-3xl text-[#bd0a0a]">
             {"Can't log in?"}
           </h2>
-          <p className="text-xl font-medium text-[#656565] w-[87%] mt-4">
+          <p className="text-sm md:text-xl font-medium text-[#656565] w-full md:w-[87%] mt-4">
             {
               "Enter the email address you used when you created your ODDITOR account, and we'll send you instructions to reset your password."
             }
@@ -139,7 +148,7 @@ const ForgotPassword = () => {
           className="mt-6 p-2 rounded-sm"
           style={{ backgroundColor: "rgba(189, 10, 10, 0.4)" }}
         >
-          <p className="text-lg">
+          <p className="text-sm md:text-lg">
             If your email address is known to us, the reset password link has
             just been sent to example@gmail.com.
           </p>

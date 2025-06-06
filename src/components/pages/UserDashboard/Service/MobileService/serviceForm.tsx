@@ -1,27 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
-import { FaStarOfLife, FaCalendarAlt } from "react-icons/fa";
+import React, { FC, useState } from "react";
+import { FaCalendarAlt } from "react-icons/fa";
 import { SlCloudUpload } from "react-icons/sl";
 import { BiSolidDownArrow } from "react-icons/bi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Image from "next/image";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import AddCardPopup from "./AddCardPopup";
 
-const Service = () => {
+interface sidebarProps {
+  viewing: (isViewing: string) => void;
+}
+
+const ServiceForm: FC<sidebarProps> = ({ viewing }) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [isUrgencyOpen, setIsUrgencyOpen] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState("");
-  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const [isPaymentOpen, setIsPaymentOpen] = useState<boolean>(false);
   const [selectedPaymentOption, setSelectedPaymentOption] = useState("");
@@ -40,9 +34,10 @@ const Service = () => {
   };
 
   return (
-    <div className="hidden md:flex w-[97%] mx-auto rounded-xs shadow-md mt-4">
-      <div className="flex flex-col w-full p-4">
-        <div className="flex w-[450px] h-[40px] border-[1px] border-[#BD0A0A] mx-auto rounded-[88px] justify-between">
+    <div className="flex w-[97%] mx-auto rounded-xs shadow-md mt-4">
+      <div className="flex md:hidden flex-col w-full p-4">
+        <p className="flex md:hidden font-bold text-lg my-6">Service</p>
+        <div className="flex w-full h-[40px] border-[1px] border-[#BD0A0A] mx-auto rounded-[88px] justify-between">
           <div className="w-[50%] bg-[#BD0A0A] rounded-[88px] flex justify-center items-center text-[#ffffff] cursor-pointer">
             Single Booking
           </div>
@@ -55,106 +50,60 @@ const Service = () => {
           {/* Car Details */}
           <div className="flex flex-col">
             <p className="font-bold text-lg">Car Details:</p>
-            <div className="flex mt-4">
-              <div className="flex flex-col mr-4">
-                <div className="flex flex-col mb-4">
-                  <div className="flex mb-2">
-                    <p className="font-semibold text-sm text-[#2D3373]">
-                      Car Name
-                    </p>
-                    <FaStarOfLife
-                      color="#FF2828"
-                      className="w-[5px] h-[5px] mt-1"
-                    />
-                  </div>
 
-                  <div className="flex items-center border-[#eeeeee] bg-[#D9EAFF] border-[1px] rounded-[9px] px-3 py-2 shadow-sm w-[320px] h-[29px]">
-                    <input
-                      type="text"
-                      placeholder="Enter here"
-                      className="outline-none w-full text-[13px]"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col">
-                  <div className="flex mb-2">
-                    <p className="font-semibold text-sm text-[#2D3373]">
-                      Color
-                    </p>
-                    <FaStarOfLife
-                      color="#FF2828"
-                      className="w-[5px] h-[5px] mt-1"
-                    />
-                  </div>
-
-                  <div className="flex items-center border-[#eeeeee] bg-[#D9EAFF] border-[1px] rounded-[9px] px-3 py-2 shadow-sm w-[320px] h-[29px]">
-                    <input
-                      type="text"
-                      placeholder="eg blue"
-                      className="outline-none w-full text-[13px]"
-                    />
-                  </div>
+            <div className="flex flex-col w-full my-6">
+              <div className="flex flex-col">
+                <p className="text-base w-full mb-4">Car Name</p>
+                <div className="flex items-center border-[#eeeeee] border-[1px] rounded-[5px] px-3 py-4 shadow-sm">
+                  <input
+                    type="text"
+                    placeholder="Car Name"
+                    className="outline-none w-full bg-transparent text-[13px]"
+                  />
                 </div>
               </div>
 
-              <div className="flex flex-col mr-4">
-                <div className="flex flex-col mb-4">
-                  <div className="flex mb-2">
-                    <p className="font-semibold text-sm text-[#2D3373]">
-                      Model
-                    </p>
-                    <FaStarOfLife
-                      color="#FF2828"
-                      className="w-[5px] h-[5px] mt-1"
-                    />
-                  </div>
-
-                  <div className="flex items-center border-[#eeeeee] bg-[#D9EAFF] border-[1px] rounded-[9px] px-3 py-2 shadow-sm w-[320px] h-[29px]">
-                    <input
-                      type="text"
-                      placeholder="eg Luxury Edition"
-                      className="outline-none w-full text-[13px]"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col">
-                  <div className="flex mb-2">
-                    <p className="font-semibold text-sm text-[#2D3373]">Year</p>
-                    <FaStarOfLife
-                      color="#FF2828"
-                      className="w-[5px] h-[5px] mt-1"
-                    />
-                  </div>
-
-                  <div className="flex items-center border-[#eeeeee] bg-[#D9EAFF] border-[1px] rounded-[9px] px-3 py-2 shadow-sm w-[320px] h-[29px]">
-                    <input
-                      type="text"
-                      placeholder="eg 2020"
-                      className="outline-none w-full text-[13px]"
-                    />
-                  </div>
+              <div className="flex flex-col mt-8">
+                <p className="text-base w-full mb-4">Model</p>
+                <div className="flex items-center border-[#eeeeee] border-[1px] rounded-[5px] px-3 py-4 shadow-sm">
+                  <input
+                    type="text"
+                    placeholder="Model"
+                    className="outline-none w-full bg-transparent text-[13px]"
+                  />
                 </div>
               </div>
 
-              <div className="flex flex-col mr-4">
-                <div className="flex flex-col mb-4">
-                  <div className="flex mb-2">
-                    <p className="font-semibold text-sm text-[#2D3373]">
-                      Number of Cars
-                    </p>
-                    <FaStarOfLife
-                      color="#FF2828"
-                      className="w-[5px] h-[5px] mt-1"
-                    />
-                  </div>
+              <div className="flex flex-col mt-8">
+                <p className="text-base w-full mb-4">Number of Cars</p>
+                <div className="flex items-center border-[#eeeeee] border-[1px] rounded-[5px] px-3 py-4 shadow-sm">
+                  <input
+                    type="text"
+                    placeholder="Number of Cars"
+                    className="outline-none w-full bg-transparent text-[13px]"
+                  />
+                </div>
+              </div>
 
-                  <div className="flex items-center border-[#eeeeee] bg-[#D9EAFF] border-[1px] rounded-[9px] px-3 py-2 shadow-sm w-[320px] h-[29px]">
+              <div className="flex w-full justify-between mt-8">
+                <div className="flex flex-col w-[47%]">
+                  <p className="text-base w-full mb-4">Color</p>
+                  <div className="flex items-center border-[#eeeeee] border-[1px] rounded-[5px] px-3 py-4 shadow-sm">
                     <input
                       type="text"
-                      placeholder="Enter here"
-                      className="outline-none w-full text-[13px]"
+                      placeholder="Eg. Blue"
+                      className="outline-none w-full bg-transparent text-[13px]"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex flex-col w-[47%]">
+                  <p className="text-base w-full mb-4">Year</p>
+                  <div className="flex items-center border-[#eeeeee] border-[1px] rounded-[5px] px-3 py-4 shadow-sm">
+                    <input
+                      type="text"
+                      placeholder="Eg. 1965"
+                      className="outline-none w-full bg-transparent text-[13px]"
                     />
                   </div>
                 </div>
@@ -163,27 +112,21 @@ const Service = () => {
           </div>
 
           {/* Location and Availability */}
-          <div className="flex">
+          <div className="flex flex-col w-full">
             <div className="flex flex-col mt-4">
-              <p className="font-bold text-lg">Location:</p>
-              <div className="flex mt-4">
-                <div className="flex flex-col mr-4">
+              <p className="font-bold text-lg">Location</p>
+              <div className="flex mt-4 black">
+                <div className="flex flex-col w-full">
                   <div className="flex flex-col mb-4">
                     <div className="flex mb-2">
-                      <p className="font-semibold text-sm text-[#2D3373]">
-                        State/Region
-                      </p>
-                      <FaStarOfLife
-                        color="#FF2828"
-                        className="w-[5px] h-[5px] mt-1"
-                      />
+                      <p className="text-base w-full mb-4">State/Region</p>
                     </div>
 
-                    <div className="flex items-center border-[#eeeeee] bg-[#D9EAFF] border-[1px] rounded-[9px] px-3 py-2 shadow-sm w-[320px] h-[29px]">
+                    <div className="flex items-center border-[#eeeeee] w-full border-[1px] rounded-[5px] px-3 py-4 shadow-sm">
                       <input
                         type="text"
-                        placeholder="Enter here"
-                        className="outline-none w-full text-[13px]"
+                        placeholder="State / Region"
+                        className="outline-none w-full bg-transparent text-[13px]"
                       />
                     </div>
                   </div>
@@ -197,13 +140,7 @@ const Service = () => {
                 <div className="flex flex-col mr-4">
                   <div className="flex flex-col mb-4">
                     <div className="flex mb-2">
-                      <p className="font-semibold text-sm text-[#2D3373]">
-                        Calendar picker
-                      </p>
-                      <FaStarOfLife
-                        color="#FF2828"
-                        className="w-[5px] h-[5px] mt-1"
-                      />
+                      <p className="text-base w-full mb-4">Calendar Picker</p>
                     </div>
 
                     <div className="relative w-full max-w-xs">
@@ -211,9 +148,9 @@ const Service = () => {
                         selected={selectedDate}
                         onChange={(date) => setSelectedDate(date)}
                         dateFormat="yyyy-MM-dd"
-                        className="w-[320px] h-[29px] border border-gray-300 rounded-[9px] px-4 py-2 pr-10 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-[#D9EAFF] shadow-sm"
+                        className="w-[370px] border border-gray-300 rounded-[9px] px-3 py-4 pr-10 shadow-sm"
                       />
-                      <FaCalendarAlt className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
+                      <FaCalendarAlt className="absolute right-[-2rem] top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
                     </div>
                   </div>
                 </div>
@@ -222,26 +159,20 @@ const Service = () => {
           </div>
 
           {/* Urgency and Payment */}
-          <div className="flex w-[70%]">
-            <div className="flex flex-col mt-4 w-[48%]">
+          <div className="flex flex-col w-full">
+            <div className="flex flex-col mt-4 w-full">
               <p className="font-bold text-lg">Urgency Level:</p>
-              <div className="flex mt-4 w-[100%]">
+              <div className="flex mt-4 w-full">
                 <div className="flex flex-col mr-4 w-[45%]">
                   <div className="flex flex-col mb-4">
                     <div className="flex mb-2">
-                      <p className="font-semibold text-sm text-[#2D3373]">
-                        Urgency scale
-                      </p>
-                      <FaStarOfLife
-                        color="#FF2828"
-                        className="w-[5px] h-[5px] mt-1"
-                      />
+                      <p className="text-base w-full mb-4">Urgency scale</p>
                     </div>
 
-                    <div className="flex relative max-w-xs items-center border-[#eeeeee] bg-[#D9EAFF] border-[1px] rounded-[9px] py-2 shadow-sm w-[100%] h-[29px]">
+                    <div className="flex relative max-w-xs items-center rounded-[9px] shadow-sm w-[100%]">
                       <div
                         onClick={toggleUrgencyDropdown}
-                        className="w-[100%] border border-gray-300 text-xs rounded-lg px-1  h-[29px] flex items-center justify-between cursor-pointer focus:ring-2 focus:ring-blue-500"
+                        className="w-[100%] border border-gray-300 text-xs rounded-lg px-3 py-4 flex items-center justify-between cursor-pointer focus:ring-2 focus:ring-blue-500"
                       >
                         <span
                           className={
@@ -276,16 +207,10 @@ const Service = () => {
                 <div className="flex flex-col w-[45%] mr-4">
                   <div className="flex flex-col mb-4">
                     <div className="flex mb-2">
-                      <p className="font-semibold text-sm text-[#2D3373]">
-                        Amount
-                      </p>
-                      <FaStarOfLife
-                        color="#FF2828"
-                        className="w-[5px] h-[5px] mt-1"
-                      />
+                      <p className="text-base w-full mb-4">Amount</p>
                     </div>
 
-                    <div className="flex items-center border-[#eeeeee] bg-[#D9EAFF] border-[1px] rounded-[9px] px-3 py-2 shadow-sm w-[100%] h-[29px]">
+                    <div className="flex items-center border-[#eeeeee] border-[1px] rounded-[9px] px-3 py-4 shadow-sm w-[100%]">
                       <input
                         type="text"
                         placeholder="N1000.00"
@@ -297,22 +222,22 @@ const Service = () => {
               </div>
             </div>
 
-            <div className="flex flex-col mt-4  w-[50%]">
+            <div className="flex flex-col mt-4  w-full]">
               <p className="font-bold text-lg">Payment:</p>
               <div className="flex mt-4">
                 <div className="flex flex-col">
                   <div className="flex flex-col mb-4">
                     <div className="flex mb-2">
-                      <p className="font-semibold text-[8px] mt-2 italic text-[#2D3373]">
+                      <p className="font-semibold text-sm mt-2 italic text-[#000000]">
                         Select your payment method from the options provided to
                         complete your transaction.
                       </p>
                     </div>
 
-                    <div className="flex relative items-center border-[#eeeeee] bg-[#D9EAFF] border-[1px] rounded-[9px] py-2 shadow-sm w-full h-[29px]">
+                    <div className="flex relative items-center border-[#eeeeee] border-[1px] rounded-[9px] shadow-sm w-full">
                       <div
                         onClick={togglePaymentDropdown}
-                        className="w-[100%] border border-gray-300 text-xs rounded-lg px-1  h-[29px] flex items-center justify-between cursor-pointer focus:ring-2 focus:ring-blue-500"
+                        className="w-[100%] border border-gray-300 text-xs rounded-lg px-3 py-4 flex items-center justify-between cursor-pointer focus:ring-2 focus:ring-blue-500"
                       >
                         <span
                           className={
@@ -346,28 +271,12 @@ const Service = () => {
 
                     <div className="relative w-full">
                       <button
-                        onClick={() => {
-                          setIsOpen(true);
-                        }}
-                        className="w-full h-[32px] text-sm mt-4 rounded-[9px] bg-[#000000] absolute text-[#ffffff] flex justify-center items-center cursor-pointer"
+                        onClick={() => viewing("addcard")}
+                        className="w-full px-3 py-4  text-sm mt-4 rounded-[9px] bg-[#000000] text-[#ffffff] flex justify-center items-center cursor-pointer"
                       >
                         Add Card
                       </button>
                     </div>
-
-                    {/* <div className="flex absolute mt-[5rem]">
-                      <Image
-                        src="/assets/visa.svg"
-                        alt="avatar_img"
-                        width={66}
-                        height={15}
-                        className=""
-                      />
-
-                      <p className="flex text-[20px] text-[#000000] ml-3">
-                        46** **** **** ****
-                      </p>
-                    </div> */}
                   </div>
                 </div>
               </div>
@@ -375,15 +284,15 @@ const Service = () => {
           </div>
 
           {/* Quote History */}
-          <div className="flex">
+          <div className="flex mt-[2rem]">
             <div className="flex flex-col">
               <p className="font-bold text-lg">Quote History:</p>
-              <div className="flex flex-col mt-1 w-[55%]">
+              <div className="flex flex-col mt-1 w-full">
                 <div className="flex flex-col mr-4">
                   <div className="flex flex-col mb-1">
                     <div className="flex mb-2">
                       <div className="flex mb-2">
-                        <p className="font-semibold text-[8px] mt-2 italic text-[#2D3373]">
+                        <p className="font-semibold text-sm mt-2 italic text-[#2D3373]">
                           Please upload your previous quotation document or
                           enter the quote amount below to help us provide an
                           accurate service estimate
@@ -421,6 +330,7 @@ const Service = () => {
                       alt="avatar_img"
                       width={24}
                       height={24}
+                      className="ml-10"
                     />
                   </div>
 
@@ -441,6 +351,7 @@ const Service = () => {
                       alt="avatar_img"
                       width={24}
                       height={24}
+                      className="ml-10"
                     />
                   </div>
                 </div>
@@ -449,31 +360,17 @@ const Service = () => {
           </div>
         </div>
 
-        <div className="flex w-full justify-end mt-4">
-          <div className="flex w-[161px] h-[53px] rounded-[7px] bg-[#000000] text-[#ffffff] font-normal text-base justify-center items-center cursor-pointer">
+        <div className="flex flex-col w-full justify-end mt-4 w-full">
+          <div className="flex w-full h-[53px] rounded-[7px] bg-[#000000] text-[#ffffff] font-normal text-base justify-center items-center cursor-pointer">
             Submit
           </div>
-          <div className="flex w-[134px] h-[53px] rounded-[7px] bg-[#BD0A0A] text-[#ffffff] font-normal text-base justify-center items-center ml-4 cursor-pointer">
+          <div className="flex w-full h-[53px] rounded-[7px] bg-[#BD0A0A] text-[#ffffff] font-normal text-base justify-center items-center mt-4 cursor-pointer">
             Cancel
           </div>
         </div>
-      </div>
-
-      <div>
-        <Dialog open={isOpen} onOpenChange={setIsOpen}>
-          <DialogTrigger></DialogTrigger>
-          <DialogContent className="bg-[#ffffff]">
-            <DialogHeader>
-              <DialogTitle></DialogTitle>
-              <DialogDescription>
-                <AddCardPopup setIsOpen={setIsOpen} />
-              </DialogDescription>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
       </div>
     </div>
   );
 };
 
-export default Service;
+export default ServiceForm;

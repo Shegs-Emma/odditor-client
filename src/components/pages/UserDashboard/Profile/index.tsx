@@ -6,7 +6,7 @@ import { MdEdit } from "react-icons/md";
 
 const Profile = () => {
   return (
-    <div className="flex w-[97%] mx-auto rounded-xs shadow-md mt-4">
+    <div className="hidden md:flex w-[97%] mx-auto rounded-xs shadow-md mt-4">
       <div className="flex flex-col w-full p-4">
         <div className="flex w-full justify-between items-center border-[1px] border-[#E3E3E3] rounded-[14px] p-4">
           <div className="flex">

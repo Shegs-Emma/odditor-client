@@ -1,0 +1,102 @@
+"use client";
+
+import Image from "next/image";
+import React, { ClipboardEvent, useState } from "react";
+
+const VerifyAccount = () => {
+  const [otpInput, setOtpInput] = useState(new Array(5).fill(""));
+  // const [isPending, startTransition] = useTransition();
+
+  const handleOtpInputChange = (element: HTMLInputElement, index: number) => {
+    if (isNaN(Number(element.value))) return false;
+
+    setOtpInput([
+      ...otpInput.map((d, idx) => (idx === index ? element.value : d)),
+    ]);
+
+    //focus next input
+    if (element.nextSibling instanceof HTMLInputElement) {
+      element.nextSibling.focus();
+    }
+  };
+
+  const handlePaste = (event: ClipboardEvent<HTMLInputElement>) => {
+    const pasted = event.clipboardData.getData("text/plain");
+    setOtpInput(pasted.split("").slice(0, otpInput.length));
+  };
+
+  return (
+    <div className="px-8 mt-[6rem] w-full bg-white rounded-md flex flex-col md:hidden">
+      <div className="w-full flex flex-col items-center justify-center m-[auto]">
+        <Image
+          src="/assets/verify_email.svg"
+          alt="avatar_img"
+          width={120}
+          height={103}
+        />
+
+        <div className="flex flex-col mt-[4rem] text-center">
+          <h2 className="font-bold text-xl text-[#000000]">
+            Verify Your Account
+          </h2>
+          <p className="font-normal text-sm my-6">
+            An OTP has been sent to your email or phone. Please enter it below
+            to verify your account.
+          </p>
+
+          <div className="flex flex-col w-full mt-4">
+            <div className="relative flex justify-center space-x-4 rounded-md">
+              {otpInput &&
+                otpInput.length &&
+                otpInput?.map((data, index) => {
+                  return (
+                    <input
+                      type="text"
+                      maxLength={1}
+                      className="mb-4 block h-15 w-15 items-center justify-center rounded-md bg-white text-center text-[12px] border-[2px] border-[#bd0a0a] text-[#4f4f4f] focus:border-olivine-500 focus:ring-olivine-500  sm:text-lg"
+                      name="opt"
+                      key={index}
+                      value={data}
+                      onChange={(e) => handleOtpInputChange(e.target, index)}
+                      onPaste={handlePaste}
+                      onFocus={(e) => e.target.select()}
+                    />
+                  );
+                })}
+            </div>
+          </div>
+
+          <p
+            // onClick={() => router.push("/login")}
+            className="font-montserrat text-sm mb-8 font-semibold text-[#4f4f4f] cursor-pointer"
+          >
+            Didn’t receive the OTP?{" "}
+            <span
+              // onClick={() => router.push("/login")}
+              className="text-[#bd0a0a] underline"
+            >
+              Resend OTP
+            </span>
+          </p>
+
+          <div className="flex flex-col justify-center items-center mb-4">
+            {/* {isPending ? (
+              <div className="flex flex-col w-full p-3 cursor-pointer items-center font-semibold text-[#ffffff] text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer">
+                loading....
+              </div>
+            ) : ( */}
+            <div
+              //   onClick={() => handleSubmit()}
+              className="flex flex-col w-full p-3 text-[#ffffff] cursor-pointer items-center font-semibold text-sm rounded mt-8 bg-[#bd0a0a] mb-4 cursor-pointer"
+            >
+              Verify
+            </div>
+            {/* )} */}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default VerifyAccount;
