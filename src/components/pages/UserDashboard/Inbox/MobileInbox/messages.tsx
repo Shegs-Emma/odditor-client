@@ -64,7 +64,7 @@ const MobileInboxMessages: FC<sidebarProps> = ({ viewing }) => {
             </div>
             <div className="flex flex-col">
               <p className="font-normal text-[10px] text-[#7D7D7D]">
-                23 October, 09:25am
+                2 mins ago
               </p>
               <BsThreeDotsVertical className="ml-auto mt-2 md:block hidden" />
             </div>
@@ -98,7 +98,7 @@ const MobileInboxMessages: FC<sidebarProps> = ({ viewing }) => {
             </div>
             <div className="flex flex-col">
               <p className="font-normal text-[10px] text-[#7D7D7D]">
-                23 October, 09:25am
+                2 mins ago
               </p>
               <BsThreeDotsVertical className="ml-auto mt-2 md:block hidden" />
             </div>
@@ -132,7 +132,7 @@ const MobileInboxMessages: FC<sidebarProps> = ({ viewing }) => {
             </div>
             <div className="flex flex-col">
               <p className="font-normal text-[10px] text-[#7D7D7D]">
-                23 October, 09:25am
+                2 mins ago
               </p>
               <BsThreeDotsVertical className="ml-auto mt-2 md:block hidden" />
             </div>
@@ -166,7 +166,7 @@ const MobileInboxMessages: FC<sidebarProps> = ({ viewing }) => {
             </div>
             <div className="flex flex-col">
               <p className="font-normal text-[10px] text-[#7D7D7D]">
-                23 October, 09:25am
+                2 mins ago
               </p>
               <BsThreeDotsVertical className="ml-auto mt-2 md:block hidden" />
             </div>

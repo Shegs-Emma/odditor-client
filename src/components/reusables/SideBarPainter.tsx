@@ -16,7 +16,7 @@ const SideBarPainter: FC<sidebarPainterProps> = ({ viewing }) => {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#BD0A0A] w-[250px] rounded-tr-[24px] rounded-br-[24px] flex flex-col justify-between">
+    <div className="relative min-h-screen bg-[#BD0A0A] w-[250px] rounded-tr-[24px] rounded-br-[24px] hidden md:flex flex-col justify-between">
       <div className="flex flex-col">
         <div className="flex justify-center items-center p-6 border-b-[1px] border-b-[#ffffff]">
           <Image
@@ -142,7 +142,9 @@ const SideBarPainter: FC<sidebarPainterProps> = ({ viewing }) => {
             )}
             <p
               className={`font-normal text-sm ml-4 ${
-                isViewing === "availability" ? "text-[#BD0A0A]" : "text-[#ffffff]"
+                isViewing === "availability"
+                  ? "text-[#BD0A0A]"
+                  : "text-[#ffffff]"
               }`}
             >
               Availability

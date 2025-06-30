@@ -6,6 +6,7 @@ import SideBarPainter from "@/components/reusables/SideBarPainter";
 import Dashboard from "../UserDashboard/Dashboard";
 import Inbox from "../UserDashboard/Inbox";
 import Profile from "../UserDashboard/Profile";
+import AuthNavbarMobilePainter from "@/components/reusables/authNavbarMobilePainter";
 
 const PainterDashboard = () => {
   const [isViewing, setIsViewing] = useState<string>("dashboard");
@@ -19,6 +20,7 @@ const PainterDashboard = () => {
       <SideBarPainter viewing={handleViewing} />
       <div className="flex flex-col w-full">
         <AuthNavbar />
+        <AuthNavbarMobilePainter viewing={handleViewing} />
         {isViewing === "dashboard" && <Dashboard />}
         {isViewing === "inbox" && <Inbox />}
         {isViewing === "profile" && <Profile />}
