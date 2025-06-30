@@ -2,17 +2,20 @@
 
 import Image from "next/image";
 import React from "react";
-import SmoothLineChart from "./SmoothLineChart";
-import PieChart from "./PieChart";
 import { GoDotFill } from "react-icons/go";
-import CustomLineChart from "./CustomLineChart";
+import SmoothLineChart from "../SmoothLineChart";
+import PieChart from "../PieChart";
+import CustomLineChart from "../CustomLineChart";
 
-const Overview = () => {
+const MobileOverview = () => {
   return (
-    <div className="hidden md:flex w-full">
-      <div className="flex flex-col">
-        <div className="flex ml-6 my-12 justify-between w-full mr-auto">
-          <div className="flex justify-center items-center w-[210px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
+    <div className="flex w-full md:hidden">
+      <div className="flex flex-col w-full">
+        <p className="flex md:hidden font-bold text-lg ml-6 md:mx-12 mt-6">
+          Overview
+        </p>
+        <div className="flex flex-col ml-6 my-12 justify-between w-full">
+          <div className="flex justify-center items-center w-[85%] h-[169px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border mb-4">
             <Image
               src="/assets/overview_icon.svg"
               alt="avatar_img"
@@ -25,7 +28,7 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center w-[210px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
+          <div className="flex justify-center items-center w-[85%] h-[169px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border mb-4">
             <Image
               src="/assets/overview_icon.svg"
               alt="avatar_img"
@@ -38,7 +41,7 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center w-[210px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
+          <div className="flex justify-center items-center w-[85%] h-[169px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border mb-4">
             <Image
               src="/assets/overview_icon.svg"
               alt="avatar_img"
@@ -51,7 +54,7 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center w-[210px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
+          <div className="flex justify-center items-center w-[85%] h-[169px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border mb-4">
             <Image
               src="/assets/overview_icon.svg"
               alt="avatar_img"
@@ -66,7 +69,7 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center w-[210px] h-[130px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border">
+          <div className="flex justify-center items-center w-[85%] h-[169px] rounded-[11px] border-[1px] border-[rgba(189,10,10,0.23)] shadow-lg border mb-4">
             <Image
               src="/assets/overview_icon.svg"
               alt="avatar_img"
@@ -82,8 +85,8 @@ const Overview = () => {
           </div>
         </div>
 
-        <div className="flex pl-[2rem] justify-between">
-          <div className="w-[42rem] h-[351px] border-[1px] border-[rgba(189,10,10,0.23)] rounded-sm">
+        <div className="flex flex-col px-1 justify-between">
+          <div className="w-full h-[351px] border-[1px] border-[rgba(189,10,10,0.23)] rounded-sm mb-4">
             <div className="flex border-b-[1px] border-b-[#EAEBEB] justify-between py-4 px-8">
               <p className="font-semibold text-base text-[#000000]">Revenue</p>
               <div className="flex items-center">
@@ -98,7 +101,7 @@ const Overview = () => {
             </div>
           </div>
 
-          <div className="w-[25rem] flex h-[228px] border-[1px] border-[rgba(189,10,10,0.23)] ml-8 rounded-sm">
+          <div className="w-full flex h-[228px] border-[1px] border-[rgba(189,10,10,0.23)] rounded-sm mb-4">
             <div>
               <PieChart />
             </div>
@@ -122,11 +125,11 @@ const Overview = () => {
           </div>
         </div>
 
-        <div className="flex flex-col w-[900px] mt-12 mb-8">
-          <p className="font-normal text-[12px] pl-[2rem] text-[#000000]">
+        <div className="flex flex-col w-full mt-12 mb-8">
+          <p className="font-normal text-[12px] text-[#000000] ml-6">
             Number of Users
           </p>
-          <div className="pl-3 mt-8">
+          <div className="mt-8 ml-[-1rem]">
             <CustomLineChart />
           </div>
         </div>
@@ -135,4 +138,4 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default MobileOverview;

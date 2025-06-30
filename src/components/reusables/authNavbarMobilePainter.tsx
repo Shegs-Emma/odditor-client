@@ -9,7 +9,7 @@ interface sidebarProps {
   viewing: (isViewing: string) => void;
 }
 
-const AuthNavbarMobile: FC<sidebarProps> = ({ viewing }) => {
+const AuthNavbarMobilePainter: FC<sidebarProps> = ({ viewing }) => {
   const [isShowing, setIsShowing] = useState<boolean>(false);
   const [isViewing, setIsViewing] = useState<string>("dashboard");
 
@@ -82,7 +82,7 @@ const AuthNavbarMobile: FC<sidebarProps> = ({ viewing }) => {
                 { id: "dashboard", icon: "dashboard" },
                 { id: "inbox", icon: "inbox" },
                 { id: "profile", icon: "profile" },
-                { id: "service", icon: "service" },
+                { id: "availability", icon: "availability" },
               ].map(({ id, icon }) => {
                 const isActive = isViewing === id;
                 return (
@@ -128,4 +128,4 @@ const AuthNavbarMobile: FC<sidebarProps> = ({ viewing }) => {
   );
 };
 
-export default AuthNavbarMobile;
+export default AuthNavbarMobilePainter;

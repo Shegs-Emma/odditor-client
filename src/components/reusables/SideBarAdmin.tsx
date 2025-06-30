@@ -18,7 +18,7 @@ const SideBarAdmin: FC<sidebarAdminProps> = ({ viewing }) => {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#BD0A0A] w-[300px] rounded-tr-[24px] rounded-br-[24px] flex flex-col justify-between">
+    <div className="relative min-h-screen bg-[#BD0A0A] w-[300px] rounded-tr-[24px] rounded-br-[24px] hidden md:flex flex-col justify-between">
       <div className="flex flex-col">
         <div className="flex justify-center items-center p-6 border-b-[1px] border-b-[#ffffff]">
           <Image
@@ -99,7 +99,7 @@ const SideBarAdmin: FC<sidebarAdminProps> = ({ viewing }) => {
 
           <div
             onClick={() => {
-              setIsViewingPM(!isViewingPM);
+              setIsViewingPM(true);
               handleIsViewing("all");
             }}
             className={`w-full flex p-4 cursor-pointer ${
@@ -184,11 +184,11 @@ const SideBarAdmin: FC<sidebarAdminProps> = ({ viewing }) => {
 
           <div
             onClick={() => {
-              handleIsViewing("availability");
+              handleIsViewing("user_management");
               setIsViewingPM(false);
             }}
             className={`w-full flex p-4 cursor-pointer ${
-              isViewing === "availability" ? "bg-[#ffffff]" : ""
+              isViewing === "user_management" ? "bg-[#ffffff]" : ""
             }`}
           >
             {isViewing === "user_management" ? (
@@ -235,7 +235,7 @@ const SideBarAdmin: FC<sidebarAdminProps> = ({ viewing }) => {
               />
             ) : (
               <Image
-                src="/assets/settings.svg"
+                src="/assets/settings_white.svg"
                 alt="avatar_img"
                 width={20}
                 height={20}
